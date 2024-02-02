@@ -13,6 +13,6 @@ public class GetAdditionalProductUseCaseImpl implements GetAdditionalProductUseC
 
     @Override
     public AdditionalProductInfo getAdditionalProductInfo(Long id) {
-        return servicePort.GetAdditionalProduct(id);
+        return servicePort.getAdditionalProduct(id);
     }
 }

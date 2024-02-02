@@ -6,15 +6,12 @@ import lombok.Getter;
 public class AdditionalProductInfo {
     private final Long id;
     private final String name;
-    private final String description;
-    private final String category;
-    private final String createdAt;
+    private final String email;
 
-    public AdditionalProductInfo(Long id, String name, String description, String category, String createdAt) {
+    public AdditionalProductInfo(Long id, String name, String email) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.category = category;
-        this.createdAt = createdAt;
+        this.email = email;
     }
+
 }

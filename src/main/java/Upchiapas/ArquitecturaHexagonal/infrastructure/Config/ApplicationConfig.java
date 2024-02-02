@@ -14,28 +14,29 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfig {
 
     @Bean
-    public ProductService productService(ProductRepositoryPort productRepositoryPort, GetAdditionalProductUseCase getAdditionalProductUseCase) {
+    public ProductService productService(ProductRepositoryPort productRepositoryPort, GetAdditionalProductUseCase getAdditionalProductUseCase){
         return new ProductService(
                 new CreateProductUseCaseImpl(productRepositoryPort),
                 new RetrieveProductUseCaseImpl(productRepositoryPort),
-                new UpdateProductUseCaseImpl(productRepositoryPort),
-                new DeleteProductUseCaseImpl(productRepositoryPort),
-                getAdditionalProductUseCase
+                new UpdateProductUseCaseImpl(productRepositoryPort),getAdditionalProductUseCase,
+                new DeleteProductUseCaseImpl(productRepositoryPort)
         );
     }
 
+
     @Bean
-    public ProductRepositoryPort productRepositoryPort(JpaProductRepositoryAdapter jpaProductRepositoryAdapter) {
+    public ProductRepositoryPort productRepositoryPort(JpaProductRepositoryAdapter jpaProductRepositoryAdapter){
         return jpaProductRepositoryAdapter;
     }
 
     @Bean
-    public  GetAdditionalProductUseCase getAdditionalProductUseCase(ExternalServicePort externalServicePort) {
+    public GetAdditionalProductUseCase getAdditionalProductUseCase(ExternalServicePort externalServicePort){
         return new GetAdditionalProductUseCaseImpl(externalServicePort);
     }
 
     @Bean
-    public ExternalServicePort externalServicePort() {
+    public ExternalServicePort externalServicePort(){
         return new ExternalServiceAdapter();
     }
+
 }

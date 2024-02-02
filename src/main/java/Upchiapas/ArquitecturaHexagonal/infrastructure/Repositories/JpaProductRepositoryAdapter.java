@@ -3,10 +3,12 @@ package Upchiapas.ArquitecturaHexagonal.infrastructure.Repositories;
 import Upchiapas.ArquitecturaHexagonal.Domain.Models.Product;
 import Upchiapas.ArquitecturaHexagonal.Domain.Ports.Out.ProductRepositoryPort;
 import Upchiapas.ArquitecturaHexagonal.infrastructure.Entities.ProductEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class JpaProductRepositoryAdapter implements ProductRepositoryPort {
     private final JpaProductRepository jpaProductRepository;
 

@@ -1,9 +1,13 @@
 package Upchiapas.ArquitecturaHexagonal.infrastructure.Entities;
 
 import Upchiapas.ArquitecturaHexagonal.Domain.Models.Product;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -17,6 +21,7 @@ public class ProductEntity {
     private String name;
     private String description;
     private String category;
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     public ProductEntity() {}

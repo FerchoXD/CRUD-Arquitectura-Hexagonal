@@ -4,10 +4,12 @@ package Upchiapas.ArquitecturaHexagonal.Aplication.Services;
 import Upchiapas.ArquitecturaHexagonal.Domain.Models.AdditionalProductInfo;
 import Upchiapas.ArquitecturaHexagonal.Domain.Models.Product;
 import Upchiapas.ArquitecturaHexagonal.Domain.Ports.In.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProductService implements CreateProductUseCase, RetrieveProductUseCase, UpdateProductUseCase, GetAdditionalProductUseCase, DeleteProductUseCase{
     private final CreateProductUseCase createProductUseCase;
     private final RetrieveProductUseCase retrieveProductUseCase;
@@ -26,6 +28,10 @@ public class ProductService implements CreateProductUseCase, RetrieveProductUseC
     @Override
     public Product CreateProduct(Product product) {
         return createProductUseCase.CreateProduct(product);
+    }
+    @Override
+    public Optional<Product> updateProduct(Long id, Product updatedProduct) {
+        return updateProductUseCase.updateProduct(id, updatedProduct);
     }
 
     @Override
@@ -48,8 +54,5 @@ public class ProductService implements CreateProductUseCase, RetrieveProductUseC
         return retrieveProductUseCase.GetAllProducts();
     }
 
-    @Override
-    public Optional<Product> updateProduct(Long id, Product updatedProduct) {
-        return updateProductUseCase.updateProduct(id, updatedProduct);
-    }
+
 }
